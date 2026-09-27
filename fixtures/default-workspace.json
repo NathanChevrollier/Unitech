@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "activeGalaxy": "perso",
+  "galaxies": [
+    {
+      "id": "perso",
+      "name": "Perso",
+      "seed": 20260927,
+      "arms": [
+        { "slot": "perseus", "label": "Développement", "color": "#6ea8ff" },
+        { "slot": "scutumCentaurus", "label": "Jeux", "color": "#ff7a59" },
+        { "slot": "sagittarius", "label": "Création", "color": "#c77dff" },
+        { "slot": "norma", "label": "Web", "color": "#4dd4ac" },
+        { "slot": "orion", "label": "Système", "color": "#ffd166" }
+      ],
+      "systems": [
+        {
+          "id": "perso-sol",
+          "name": "Soleil",
+          "anchor": { "kind": "home" },
+          "status": "active",
+          "notes": "",
+          "planets": [],
+          "createdAt": 0
+        }
+      ],
+      "archive": [],
+      "createdAt": 0
+    }
+  ],
+  "settings": {
+    "quality": "medium",
+    "bloom": true,
+    "galaxyRotation": true,
+    "orbitMotion": true,
+    "showLabels": true,
+    "showConstellations": false,
+    "reducedMotion": false,
+    "globalShortcut": "CommandOrControl+Shift+Space",
+    "closeToTray": true,
+    "onboarded": false
+  }
+}

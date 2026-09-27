@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "activeGalaxy": "travail",
+  "galaxies": [
+    {
+      "id": "perso",
+      "name": "Perso",
+      "seed": 20260927,
+      "arms": [
+        { "slot": "perseus", "label": "Développement", "color": "#6ea8ff" },
+        { "slot": "scutumCentaurus", "label": "Jeux", "color": "#ff7a59" },
+        { "slot": "sagittarius", "label": "Création", "color": "#c77dff" },
+        { "slot": "norma", "label": "Web", "color": "#4dd4ac" },
+        { "slot": "orion", "label": "Système", "color": "#ffd166" }
+      ],
+      "systems": [
+        { "id": "perso-sol", "name": "Soleil", "anchor": { "kind": "home" }, "status": "active", "notes": "", "planets": [], "createdAt": 0 }
+      ],
+      "archive": [],
+      "createdAt": 0
+    },
+    {
+      "id": "travail",
+      "name": "Travail",
+      "seed": 42,
+      "arms": [
+        { "slot": "perseus", "label": "Code", "color": "#6ea8ff" },
+        { "slot": "scutumCentaurus", "label": "Réunions", "color": "#ff7a59" },
+        { "slot": "sagittarius", "label": "Design", "color": "#c77dff" },
+        { "slot": "norma", "label": "Web", "color": "#4dd4ac" },
+        { "slot": "orion", "label": "Serveurs", "color": "#ffd166" }
+      ],
+      "systems": [
+        {
+          "id": "travail-sol",
+          "name": "Soleil",
+          "anchor": { "kind": "home" },
+          "status": "active",
+          "notes": "Mes favoris",
+          "planets": [
+            {
+              "id": "p-code",
+              "name": "VS Code",
+              "target": { "kind": "app", "value": "/usr/bin/code", "args": ["--new-window"], "cwd": "/home/nathan" },
+              "icon": "💻",
+              "kind": "ocean",
+              "ring": true,
+              "moons": [
+                { "id": "m-code-projet", "name": "Ouvrir Zenytt", "target": { "kind": "folder", "value": "/home/nathan/Zenytt" } }
+              ],
+              "usage": { "launchCount": 12, "lastLaunched": 1790000000000 },
+              "createdAt": 1780000000000
+            },
+            {
+              "id": "p-site",
+              "name": "Site",
+              "target": { "kind": "url", "value": "https://example.com" },
+              "kind": "auto",
+              "ring": false,
+              "moons": [],
+              "usage": { "launchCount": 0 },
+              "createdAt": 1780000000001
+            }
+          ],
+          "createdAt": 1780000000000
+        },
+        {
+          "id": "s-zenytt",
+          "name": "Zenytt",
+          "anchor": { "kind": "arm", "arm": "perseus", "t": 0.42, "offset": -0.3 },
+          "status": "paused",
+          "color": "#88ccff",
+          "notes": "",
+          "planets": [
+            {
+              "id": "p-build",
+              "name": "Build",
+              "target": { "kind": "command", "value": "pnpm build" },
+              "kind": "lava",
+              "ring": false,
+              "moons": [],
+              "usage": { "launchCount": 3, "lastLaunched": 1789000000000 },
+              "createdAt": 1780000000002
+            }
+          ],
+          "createdAt": 1780000000002
+        },
+        {
+          "id": "s-sirius",
+          "name": "Veille",
+          "anchor": { "kind": "real", "hygId": 32263, "name": "Sirius" },
+          "status": "dormant",
+          "notes": "",
+          "planets": [],
+          "createdAt": 1780000000003
+        }
+      ],
+      "archive": [
+        {
+          "id": "a-2",
+          "archivedAt": 1790000000002,
+          "payload": { "type": "system", "system": { "id": "s-old", "name": "Ancien", "anchor": { "kind": "arm", "arm": "orion", "t": 0.1, "offset": 0.0 }, "status": "active", "notes": "", "planets": [], "createdAt": 1 } }
+        },
+        {
+          "id": "a-1",
+          "archivedAt": 1790000000001,
+          "payload": { "type": "planet", "systemId": "s-zenytt", "planet": { "id": "p-old", "name": "Vieux", "target": { "kind": "file", "value": "/tmp/a.txt" }, "kind": "ice", "ring": false, "moons": [], "usage": { "launchCount": 1, "lastLaunched": 5 }, "createdAt": 2 } }
+        }
+      ],
+      "createdAt": 1780000000000
+    }
+  ],
+  "settings": {
+    "quality": "ultra",
+    "bloom": false,
+    "galaxyRotation": false,
+    "orbitMotion": true,
+    "showLabels": true,
+    "showConstellations": true,
+    "reducedMotion": false,
+    "globalShortcut": "Alt+Shift+U",
+    "closeToTray": false,
+    "onboarded": true
+  }
+}

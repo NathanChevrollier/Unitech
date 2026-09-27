@@ -1,0 +1,19 @@
+[package]
+name = "unitech-system"
+description = "Mesures système des widgets, téléchargements récents (comètes), applications ouvertes"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+dirs.workspace = true
+sysinfo = { version = "0.38", default-features = false, features = ["system"] }
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

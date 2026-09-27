@@ -1,0 +1,7 @@
+# Projet autonome : ce fichier en fait sa propre racine pnpm, indépendante du dépôt parent.
+packages:
+  - "."
+
+# esbuild télécharge son binaire à l'installation, indispensable à Vite.
+allowBuilds:
+  esbuild: true
