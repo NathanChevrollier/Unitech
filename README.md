@@ -76,7 +76,6 @@ Prérequis :
   Ubuntu : `libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev`.
 
 ```sh
-cd unitech
 pnpm install
 pnpm app:dev      # application de bureau, rechargement à chaud
 pnpm app:build    # installeurs dans target/release/bundle/
@@ -86,7 +85,7 @@ pnpm dev          # interface seule dans le navigateur (http://localhost:1430)
 Dans le navigateur, l'espace de travail est gardé dans le stockage local et seules les planètes
 « Lien » se lancent. C'est le mode utilisé pour développer l'interface et pour les captures.
 
-Un tag `unitech-v*` déclenche la construction des installeurs (Windows, macOS universel, Linux)
+Un tag `v*` déclenche la construction des installeurs (Windows, macOS universel, Linux)
 par la CI, joints à un brouillon de release.
 
 ## Architecture
@@ -151,7 +150,7 @@ pnpm build && pnpm preview --port 4173 &
 node scripts/screenshot.mjs          # visite guidée et captures (rendu logiciel, sans écran)
 ```
 
-La CI (`.github/workflows/unitech.yml`) exécute tout cela sous Linux. Elle lance aussi clippy et
+La CI (`.github/workflows/ci.yml`) exécute tout cela sous Linux. Elle lance aussi clippy et
 les tests sous Windows et macOS.
 
 ## Données tierces
