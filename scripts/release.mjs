@@ -22,7 +22,7 @@ const forced = args.find((a) => !a.startsWith("--"));
 if (forced && !LEVELS.includes(forced)) fail(`incrément inconnu « ${forced} » (attendu : ${LEVELS.join(", ")})`);
 
 const run = (cmd, cmdArgs, opts = {}) =>
-  execFileSync(cmd, cmdArgs, { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"], ...opts }).trim();
+  execFileSync(cmd, cmdArgs, { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"], ...opts })?.trim() ?? "";
 const git = (...a) => run("git", a);
 
 function fail(message) {
