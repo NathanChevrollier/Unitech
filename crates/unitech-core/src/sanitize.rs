@@ -156,7 +156,7 @@ fn galaxy(cx: &mut Ctx, g: &mut Galaxy) {
 
     let mut kept = Vec::with_capacity(g.archive.len().min(MAX_ARCHIVE));
     // Les plus récents d'abord : ce sont eux qu'on garde si l'archive déborde.
-    g.archive.sort_by(|a, b| b.archived_at.cmp(&a.archived_at));
+    g.archive.sort_by_key(|a| std::cmp::Reverse(a.archived_at));
     for mut item in g.archive.drain(..) {
         if kept.len() >= MAX_ARCHIVE {
             cx.fix();
