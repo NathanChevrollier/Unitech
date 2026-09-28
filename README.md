@@ -85,8 +85,19 @@ pnpm dev          # interface seule dans le navigateur (http://localhost:1430)
 Dans le navigateur, l'espace de travail est gardé dans le stockage local et seules les planètes
 « Lien » se lancent. C'est le mode utilisé pour développer l'interface et pour les captures.
 
-Un tag `v*` déclenche la construction des installeurs (Windows, macOS universel, Linux)
-par la CI, joints à un brouillon de release.
+`pnpm app:build` produit un installeur local, sans rien publier. Pour une release :
+
+```sh
+pnpm release --dry-run   # affiche la prochaine version et les notes, sans rien modifier
+pnpm release             # incrément déduit des commits depuis le dernier tag
+pnpm release minor       # ou incrément forcé : major | minor | patch
+```
+
+L'incrément suit les Conventional Commits : `feat!:` ou `BREAKING CHANGE:` → majeure, `feat:` →
+mineure, le reste → correctif. Le script met à jour `package.json`, `tauri.conf.json`, `Cargo.toml`
+et `Cargo.lock`, commite `chore(release): vX.Y.Z`, pose un tag annoté portant les notes et pousse.
+La CI construit alors les installeurs (Windows, macOS universel, Linux) et publie la release
+quand toutes les plateformes ont réussi.
 
 ## Architecture
 

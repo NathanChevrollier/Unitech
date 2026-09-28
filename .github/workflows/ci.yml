@@ -73,10 +73,28 @@ jobs:
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test --workspace
 
-  # Installeurs (.msi/.exe, .dmg, .deb/.AppImage) joints à un brouillon de release, sur un tag v*.
-  bundle:
+  # Sur un tag v* (posé par `pnpm release`) : brouillon de release avec les notes du tag annoté,
+  # installeurs joints par `bundle`, puis publication quand toutes les plateformes ont réussi.
+  release:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [check, clippy]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Brouillon de release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          git fetch --force origin "refs/tags/$TAG:refs/tags/$TAG"
+          git for-each-ref "refs/tags/$TAG" --format='%(contents)' > notes.md
+          gh release view "$TAG" > /dev/null 2>&1             || gh release create "$TAG" --draft --verify-tag --title "Unitech $TAG" --notes-file notes.md
+
+  # Installeurs (.msi/.exe, .dmg, .deb/.AppImage) joints au brouillon de release.
+  bundle:
+    needs: release
     permissions:
       contents: write
     strategy:
@@ -123,3 +141,13 @@ jobs:
           releaseName: "Unitech ${{ github.ref_name }}"
           releaseDraft: true
           args: ${{ matrix.args }}
+
+  publish:
+    needs: bundle
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "${{ github.ref_name }}" --repo "${{ github.repository }}" --draft=false --latest
